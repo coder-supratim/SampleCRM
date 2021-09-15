@@ -368,8 +368,12 @@ namespace NWTraders.Views
                     Where(c => string.Compare(c.CustomerID, selectedCustomerID) == 0).
                     Select(c => c).FirstOrDefault();
 
-                if (selectedCustomer != null)
+                if (selectedCustomer != null) {  
                     this.rtfCustomerInformation.Text = selectedCustomer.CustomerInformation;
+                    IEnumerable<Order> selectedOrders = nwEntities.Orders.Where(o => o.CustomerID == selectedCustomer.CustomerID);
+                    LoadOrderDetails(selectedOrders);
+                }
+                   
             }
 
         }
