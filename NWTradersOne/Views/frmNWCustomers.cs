@@ -54,7 +54,7 @@ namespace NWTraders.Views
 
         public List<String> AllTitles()
         {
-            List<String> allTitles = new List<string>();
+            List<String> allTitles  = new List<string>();
 
             // From the customers table, 
             // where the contact title is not null or empty, 
@@ -116,6 +116,35 @@ namespace NWTraders.Views
 
         }
 
+        public void FormatOrderDetailsDGV()
+        {
+            // First clear all the rows in the DGV.
+            dgvOrders.Rows.Clear();
+
+            
+            dgvOrders.ColumnCount = 4;
+
+
+            dgvOrders.Columns[0].Name = "OrderID";
+            dgvOrders.Columns[0].Width = 225;
+            dgvOrders.Columns[0].HeaderText = "Order ID";
+
+            dgvOrders.Columns[1].Name = "OrderDate";
+            dgvOrders.Columns[1].Width = 150;
+            dgvOrders.Columns[1].HeaderText = "Order Placed";
+
+            dgvOrders.Columns[2].Name = "ShippedDate";
+            dgvOrders.Columns[2].Width = 150;
+            dgvOrders.Columns[2].HeaderText = "Shipped Date";
+
+            dgvOrders.Columns[3].Name = "OrderTotal";
+            dgvOrders.Columns[3].Width = 125;
+            dgvOrders.Columns[3].HeaderText = "Order Total";
+
+
+           
+        }
+
         public void LoadDGV(IEnumerable<Customer> customers)
         {
             // If there are no customers, do nothing and return from the function.
@@ -156,6 +185,41 @@ namespace NWTraders.Views
 
         }
 
+        public void LoadOrderDetails(IEnumerable<Order> orders)
+        {
+            // If there are no Orders, do nothing and return from the function.
+            if (orders == null) return;
+
+            // The following lines of code will run only if the list of orders objects is not null - in other words, if there are customers.
+
+            // If there are no columns in the DGV, then it has not been initialized
+            //  Initialize and format the DGV using the function we wrote, before adding anything.
+            if (dgvOrders.RowCount == 0)
+                FormatOrderDetailsDGV();
+
+
+            // First we wil clear the DGV Rows if any exist.
+            dgvOrders.Rows.Clear();
+
+            // Go through every order in the order collection and 
+            // add it as a row in the dgvOrders
+            foreach (Order order in orders)
+            {
+                dgvOrders.Rows.Add(
+                    order.OrderID, 
+                    order.OrderDate,
+                    order.ShippedDate,
+                    order.orderTotal
+                               );
+            }
+
+            // Clear any selections that may have been made.
+            dgvOrders.ClearSelection();
+
+            // As a beginning default view, we can sort the dgv in alphabetical order of Company name (Field 1)
+            dgvOrders.Sort(dgvOrders.Columns[1], ListSortDirection.Ascending);
+
+        }
 
         // The function returns all the customer objects who have the country supplied.
         public IEnumerable<Customer> SearchByCounty(string Country)
@@ -313,6 +377,38 @@ namespace NWTraders.Views
 
         }
 
+
+        private void DgvOrders_SelectionChanged(object sender, EventArgs e)
+        {
+            int selectedRowIndex = -1;
+
+            // When a row in the DGV is selected, you can find which row index is selected.
+            // Generally, you can zero or select multiple rows in a dgv.
+            // If a row is selected, then the SelectedRowsCollection has a count of > 0 
+            //and we can get the index of the selected row[0] - which is the first (and in our case the only row) selected.
+            if (dgvOrders.SelectedRows.Count > 0)
+                selectedRowIndex = dgvOrders.SelectedRows[0].Index;
+
+            // Just to double check, make sure that the value of the index is greater than zero.
+            if (selectedRowIndex > 0)
+            {
+
+                // Get the value of the CustomerID field in the selected Row.
+                string selectedOrdersID = dgvCustomers.Rows[selectedRowIndex].Cells["CustomerID"].Value.ToString();
+
+                // Now I have the primary key - I can find the selected customer object.
+                // Even though there will be only one customer, 
+               //IEnumerable<Order> selectedOrders = nwEntities.Orders.Where(o => o.OrderID = selectedOrdersID).Select(o => o.OrderDetails).Sum(od => od.UnitlPrice);
+
+                /*selectedCustomer = nwEntities.Customers.
+                    Where(c => string.Compare(c.CustomerID, selectedCustomerID) == 0).
+                    Select(c => c).FirstOrDefault();*/
+
+                if (selectedCustomer != null)
+                    this.rtfCustomerInformation.Text = selectedCustomer.CustomerInformation;
+            }
+
+        }
         /// <summary>
         /// The event handler for a change in the selection for a country 
         /// The funciton calls the Search By Country method and passes the selected value in the comboBox.

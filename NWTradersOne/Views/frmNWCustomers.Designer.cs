@@ -45,9 +45,11 @@
             this.cmbContactTitle = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.rtfCustomerInformation = new System.Windows.Forms.RichTextBox();
             this.grpSearchCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -61,7 +63,6 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.BtnExit_Click);
-
             // 
             // btnReset
             // 
@@ -92,7 +93,7 @@
             this.txtCompany.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompany.Location = new System.Drawing.Point(116, 43);
             this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(150, 23);
+            this.txtCompany.Size = new System.Drawing.Size(150, 39);
             this.txtCompany.TabIndex = 2;
             this.txtCompany.TextChanged += new System.EventHandler(this.TxtCompany_TextChanged);
             // 
@@ -113,7 +114,7 @@
             this.txtContact.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(116, 73);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(150, 23);
+            this.txtContact.Size = new System.Drawing.Size(150, 39);
             this.txtContact.TabIndex = 2;
             this.txtContact.TextChanged += new System.EventHandler(this.TxtContact_TextChanged);
             // 
@@ -127,8 +128,6 @@
             this.lblCity.TabIndex = 1;
             this.lblCity.Text = "City";
             this.lblCity.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-           
-
             // 
             // txtCity
             // 
@@ -136,7 +135,7 @@
             this.txtCity.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(116, 141);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(150, 23);
+            this.txtCity.Size = new System.Drawing.Size(150, 39);
             this.txtCity.TabIndex = 2;
             this.txtCity.TextChanged += new System.EventHandler(this.TxtCity_TextChanged);
             // 
@@ -158,10 +157,9 @@
             this.cmbRegion.FormattingEnabled = true;
             this.cmbRegion.Location = new System.Drawing.Point(116, 171);
             this.cmbRegion.Name = "cmbRegion";
-            this.cmbRegion.Size = new System.Drawing.Size(150, 23);
+            this.cmbRegion.Size = new System.Drawing.Size(150, 40);
             this.cmbRegion.TabIndex = 3;
             this.cmbRegion.SelectedIndexChanged += new System.EventHandler(this.CmbRegion_SelectedIndexChanged);
-
             // 
             // lblCountry
             // 
@@ -181,7 +179,7 @@
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(116, 204);
             this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(150, 23);
+            this.cmbCountry.Size = new System.Drawing.Size(150, 40);
             this.cmbCountry.TabIndex = 3;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.CmbCountry_SelectedIndexChanged);
             // 
@@ -216,10 +214,9 @@
             this.cmbContactTitle.FormattingEnabled = true;
             this.cmbContactTitle.Location = new System.Drawing.Point(116, 105);
             this.cmbContactTitle.Name = "cmbContactTitle";
-            this.cmbContactTitle.Size = new System.Drawing.Size(150, 23);
+            this.cmbContactTitle.Size = new System.Drawing.Size(150, 40);
             this.cmbContactTitle.TabIndex = 3;
             this.cmbContactTitle.SelectedIndexChanged += new System.EventHandler(this.CmbContactTitle_SelectedIndexChanged);
-
             // 
             // label1
             // 
@@ -237,15 +234,31 @@
             this.dgvCustomers.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvCustomers.Location = new System.Drawing.Point(291, 12);
+            this.dgvCustomers.Location = new System.Drawing.Point(307, 28);
             this.dgvCustomers.MultiSelect = false;
             this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.RowHeadersWidth = 82;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 9.75F);
             this.dgvCustomers.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomers.Size = new System.Drawing.Size(919, 250);
             this.dgvCustomers.TabIndex = 5;
             this.dgvCustomers.SelectionChanged += new System.EventHandler(this.DgvCustomers_SelectionChanged);
+            // 
+            // dgvOrders
+            // 
+            this.dgvOrders.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvOrders.Location = new System.Drawing.Point(307, 313);
+            this.dgvOrders.MultiSelect = false;
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.RowHeadersWidth = 82;
+            this.dgvOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrders.Size = new System.Drawing.Size(416, 250);
+            this.dgvOrders.TabIndex = 5;
+            this.dgvOrders.SelectionChanged += new System.EventHandler(this.DgvOrders_SelectionChanged);
             // 
             // rtfCustomerInformation
             // 
@@ -263,6 +276,7 @@
             this.ClientSize = new System.Drawing.Size(1225, 800);
             this.Controls.Add(this.rtfCustomerInformation);
             this.Controls.Add(this.dgvCustomers);
+            this.Controls.Add(this.dgvOrders);
             this.Controls.Add(this.grpSearchCustomers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
@@ -274,6 +288,7 @@
             this.grpSearchCustomers.ResumeLayout(false);
             this.grpSearchCustomers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -294,6 +309,7 @@
         private System.Windows.Forms.ComboBox cmbCountry;
         private System.Windows.Forms.GroupBox grpSearchCustomers;
         private System.Windows.Forms.DataGridView dgvCustomers;
+        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.ComboBox cmbContactTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtfCustomerInformation;
