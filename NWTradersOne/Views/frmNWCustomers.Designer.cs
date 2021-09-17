@@ -47,6 +47,7 @@
             this.dgvCustomers = new System.Windows.Forms.DataGridView();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.rtfCustomerInformation = new System.Windows.Forms.RichTextBox();
+            this.rtfOrderInformation = new System.Windows.Forms.RichTextBox();
             this.grpSearchCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -93,7 +94,7 @@
             this.txtCompany.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompany.Location = new System.Drawing.Point(116, 43);
             this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(150, 39);
+            this.txtCompany.Size = new System.Drawing.Size(150, 23);
             this.txtCompany.TabIndex = 2;
             this.txtCompany.TextChanged += new System.EventHandler(this.TxtCompany_TextChanged);
             // 
@@ -114,7 +115,7 @@
             this.txtContact.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(116, 73);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(150, 39);
+            this.txtContact.Size = new System.Drawing.Size(150, 23);
             this.txtContact.TabIndex = 2;
             this.txtContact.TextChanged += new System.EventHandler(this.TxtContact_TextChanged);
             // 
@@ -135,7 +136,7 @@
             this.txtCity.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(116, 141);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(150, 39);
+            this.txtCity.Size = new System.Drawing.Size(150, 23);
             this.txtCity.TabIndex = 2;
             this.txtCity.TextChanged += new System.EventHandler(this.TxtCity_TextChanged);
             // 
@@ -157,7 +158,7 @@
             this.cmbRegion.FormattingEnabled = true;
             this.cmbRegion.Location = new System.Drawing.Point(116, 171);
             this.cmbRegion.Name = "cmbRegion";
-            this.cmbRegion.Size = new System.Drawing.Size(150, 40);
+            this.cmbRegion.Size = new System.Drawing.Size(150, 23);
             this.cmbRegion.TabIndex = 3;
             this.cmbRegion.SelectedIndexChanged += new System.EventHandler(this.CmbRegion_SelectedIndexChanged);
             // 
@@ -179,7 +180,7 @@
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(116, 204);
             this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(150, 40);
+            this.cmbCountry.Size = new System.Drawing.Size(150, 23);
             this.cmbCountry.TabIndex = 3;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.CmbCountry_SelectedIndexChanged);
             // 
@@ -214,7 +215,7 @@
             this.cmbContactTitle.FormattingEnabled = true;
             this.cmbContactTitle.Location = new System.Drawing.Point(116, 105);
             this.cmbContactTitle.Name = "cmbContactTitle";
-            this.cmbContactTitle.Size = new System.Drawing.Size(150, 40);
+            this.cmbContactTitle.Size = new System.Drawing.Size(150, 23);
             this.cmbContactTitle.TabIndex = 3;
             this.cmbContactTitle.SelectedIndexChanged += new System.EventHandler(this.CmbContactTitle_SelectedIndexChanged);
             // 
@@ -269,11 +270,22 @@
             this.rtfCustomerInformation.TabIndex = 6;
             this.rtfCustomerInformation.Text = "";
             // 
+            // richTextBox1
+            // 
+            this.rtfOrderInformation.BackColor = System.Drawing.SystemColors.Info;
+            this.rtfOrderInformation.Font = new System.Drawing.Font("Corbel", 11F);
+            this.rtfOrderInformation.Location = new System.Drawing.Point(752, 313);
+            this.rtfOrderInformation.Name = "rtfOrderInformation";
+            this.rtfOrderInformation.Size = new System.Drawing.Size(273, 121);
+            this.rtfOrderInformation.TabIndex = 6;
+            this.rtfOrderInformation.Text = "";
+            // 
             // frmNWCustomers
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1225, 800);
+            this.Controls.Add(this.rtfOrderInformation);
             this.Controls.Add(this.rtfCustomerInformation);
             this.Controls.Add(this.dgvCustomers);
             this.Controls.Add(this.dgvOrders);
@@ -313,6 +325,7 @@
         private System.Windows.Forms.ComboBox cmbContactTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtfCustomerInformation;
+        private System.Windows.Forms.RichTextBox rtfOrderInformation;
     }
 }
 

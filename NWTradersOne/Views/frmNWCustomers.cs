@@ -394,19 +394,15 @@ namespace NWTraders.Views
             if (selectedRowIndex > 0)
             {
 
-                // Get the value of the CustomerID field in the selected Row.
-                string selectedOrdersID = dgvCustomers.Rows[selectedRowIndex].Cells["CustomerID"].Value.ToString();
+                // Get the value of the OrderID field in the selected Row.
+                string selectedOrderID = dgvCustomers.Rows[selectedRowIndex].Cells["OrderID"].Value.ToString();
 
-                // Now I have the primary key - I can find the selected customer object.
-                // Even though there will be only one customer, 
-               //IEnumerable<Order> selectedOrders = nwEntities.Orders.Where(o => o.OrderID = selectedOrdersID).Select(o => o.OrderDetails).Sum(od => od.UnitlPrice);
-
-                /*selectedCustomer = nwEntities.Customers.
-                    Where(c => string.Compare(c.CustomerID, selectedCustomerID) == 0).
-                    Select(c => c).FirstOrDefault();*/
+                 Order selectedOrder = nwEntities.Orders.
+                    Where(o => string.Compare(o.CustomerID, selectedOrderID) == 0).
+                    Select(o => o).FirstOrDefault();
 
                 if (selectedCustomer != null)
-                    this.rtfCustomerInformation.Text = selectedCustomer.CustomerInformation;
+                    this.rtfOrderInformation.Text = selectedOrder.Order_Detail;
             }
 
         }
