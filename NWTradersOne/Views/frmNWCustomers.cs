@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Convert;
 
 
 namespace NWTraders.Views
@@ -395,14 +396,14 @@ namespace NWTraders.Views
             {
 
                 // Get the value of the OrderID field in the selected Row.
-                string selectedOrderID = dgvCustomers.Rows[selectedRowIndex].Cells["OrderID"].Value.ToString();
+                int selectedOrderID = ToInt32(dgvOrders.Rows[selectedRowIndex].Cells["OrderID"].Value.ToString());
 
                  Order selectedOrder = nwEntities.Orders.
-                    Where(o => string.Compare(o.CustomerID, selectedOrderID) == 0).
+                    Where(o => o.OrderID == selectedOrderID).
                     Select(o => o).FirstOrDefault();
 
                 if (selectedCustomer != null)
-                    this.rtfOrderInformation.Text = selectedOrder.Order_Detail;
+                    this.rtfOrderInformation.Text = selectedOrder.OrderInformation;
             }
 
         }
