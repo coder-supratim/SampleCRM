@@ -26,7 +26,7 @@ namespace NWTraders.Controller
             {
                 string decoratedOrderInformation = "";
 
-                decoratedOrderInformation += this.OrderID + "\n";
+                decoratedOrderInformation += "Order Details for the Order Id: " + this.OrderID + "\n";
                 decoratedOrderInformation += "--------------------------------------------- \n";
                 decoratedOrderInformation += "Order Date: " + this.OrderDate + "\n";
                 decoratedOrderInformation += "Customer Name: " + this.Customer.CompanyName + "\n";
