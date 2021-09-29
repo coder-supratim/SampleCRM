@@ -356,8 +356,8 @@ namespace NWTraders.Views
             if (dgvCustomers.SelectedRows.Count > 0)
                 selectedRowIndex = dgvCustomers.SelectedRows[0].Index;
 
-            // Just to double check, make sure that the value of the index is greater than zero.
-            if (selectedRowIndex > 0)
+            // This code was having an issue in the assignment sample project, not selecting the first record of customer data. Fixed it. 
+            if (selectedRowIndex > -1)
             {
 
                 // Get the value of the CustomerID field in the selected Row.
@@ -366,7 +366,7 @@ namespace NWTraders.Views
                 // Now I have the primary key - I can find the selected customer object.
                 // Even though there will be only one customer, 
                 selectedCustomer = nwEntities.Customers.
-                    Where(c => string.Compare(c.CustomerID, selectedCustomerID) == 0).
+                    Where(c => string.Equals(c.CustomerID, selectedCustomerID)).
                     Select(c => c).FirstOrDefault();
 
                 if (selectedCustomer != null) {  
@@ -392,7 +392,7 @@ namespace NWTraders.Views
                 selectedRowIndex = dgvOrders.SelectedRows[0].Index;
 
             // Just to double check, make sure that the value of the index is greater than zero.
-            if (selectedRowIndex > 0)
+            if (selectedRowIndex > -1)
             {
 
                 // Get the value of the OrderID field in the selected Row.
