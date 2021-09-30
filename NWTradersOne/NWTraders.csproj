@@ -121,6 +121,12 @@
     <Compile Include="Controller\Territory.cs">
       <DependentUpon>NWEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\frmNWProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmNWProducts.Designer.cs">
+      <DependentUpon>frmNWProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NWTradersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\frmNWProducts.resx">
+      <DependentUpon>frmNWProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\NWTradersMain.resx">
       <DependentUpon>NWTradersMain.cs</DependentUpon>
     </EmbeddedResource>

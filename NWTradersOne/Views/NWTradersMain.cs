@@ -38,6 +38,18 @@ namespace NWTraders.Views
             ShowCustomerForm(sender, e);
         }
 
+        private void BtnProducts_Click(object sender, EventArgs e)
+        {
+            ShowProductForm(sender, e);
+        }
+        private void ShowProductForm(object sender, EventArgs e)
+        {
+            Form childForm = new frmNWProducts();
+            childForm.MdiParent = this;
+            childForm.Text = "Window " + childFormNumber++;
+            childForm.Show();
+        }
+
         private void BtnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
