@@ -49,7 +49,7 @@ namespace NWTraders.Views
             dgvProducts.Rows.Clear();
 
             // This is the number of fields in the Products table - we will create that many columns in the DGV.
-            dgvProducts.ColumnCount = 8;
+            dgvProducts.ColumnCount = 6;
 
             dgvProducts.Columns[0].Name = "ProductID";
             dgvProducts.Columns[0].Visible = false; /// The primary key is not made visible per best practice.
