@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NWTraders.Controller;
-
+using System.Diagnostics;
 
 namespace NWTraders.Views
 {
@@ -61,15 +61,15 @@ namespace NWTraders.Views
             dgvProducts.Columns[1].HeaderText = "Product Name";
 
             dgvProducts.Columns[2].Name = "SellerEmployee";
-            dgvProducts.Columns[2].Width = 150;
-            dgvProducts.Columns[2].HeaderText = "Supplier Employee";
+            dgvProducts.Columns[2].Width = 500;
+            dgvProducts.Columns[2].HeaderText = "Seller Employees";
 
             dgvProducts.Columns[3].Name = "TotalSales";
             dgvProducts.Columns[3].Width = 150;
             dgvProducts.Columns[3].HeaderText = "Total Sales";
 
             dgvProducts.Columns[4].Name = "Region";
-            dgvProducts.Columns[4].Width = 150;
+            dgvProducts.Columns[4].Width = 400;
             dgvProducts.Columns[4].HeaderText = "Region of Sales";
 
             dgvProducts.Columns[5].Name = "Discontinued";
@@ -82,19 +82,57 @@ namespace NWTraders.Views
 
         }
 
-        private string sellerEmployee(int OrderID)
+        private string SellerEmployee(ICollection<Order_Detail> Order_Details)
         {
 
+            string sellerEmployee = "";
+            foreach (Order_Detail od in Order_Details)
+            {
 
-            var queryResults =
-            from e in nwEntities.Employees
-            join o in nwEntities.Orders on e.EmployeeID equals o.EmployeeID
-            where o.OrderID == OrderID
-            select new { FullName = (e.FirstName + " " + e.LastName) };
-            return queryResults.FirstOrDefault().FullName;
+
+                var queryResults =
+                (from e in nwEntities.Employees
+                 join o in nwEntities.Orders on e.EmployeeID equals o.EmployeeID
+                 where o.OrderID == od.OrderID
+                 select new { FullName = e.FirstName + " " + e.LastName }).Distinct();
+
+                foreach (var item in queryResults)
+                {
+                    if (string.IsNullOrEmpty(item.FullName))
+                    {
+                        sellerEmployee = string.Concat(sellerEmployee, item.FullName, " ,");
+                    }
+                }
+            }
+            Debug.WriteLine($"Employee Names: {sellerEmployee}");
+            return sellerEmployee;
         }
 
-    public void LoadDGV(IEnumerable<Product> products)
+        private string SalesRegions(ICollection<Order_Detail> Order_Details)
+        {
+
+            string salesRegion = "";
+            foreach (Order_Detail od in Order_Details)
+            {
+                var queryResults =
+                (from o in nwEntities.Orders
+                 where o.OrderID == od.OrderID
+                 select new {o.ShipRegion}).Distinct();
+
+                foreach (var item in queryResults)
+                {
+                    if (string.IsNullOrEmpty(item.ShipRegion))
+                    {
+                        salesRegion = string.Concat(salesRegion, item.ShipRegion, " ,");
+                    }
+                    
+                }
+            }
+            Debug.WriteLine($"Regions: {salesRegion}");
+            return salesRegion;
+        }
+
+        public void LoadDGV(IEnumerable<Product> products)
         {
             // If there are no customers, do nothing and return from the function.
             if (products == null) return;
@@ -116,10 +154,10 @@ namespace NWTraders.Views
             {
                 dgvProducts.Rows.Add(
                     prod.ProductID, // The ID will not actually be shown since it is given to a column that has the Visible property set to False.
-                    sellerEmployee(prod.Order_Details.FirstOrDefault().OrderID),
-                    prod.totalSales,
-                    prod.Supplier.ContactName,
-                    prod.UnitPrice,
+                    prod.ProductName,
+                    SellerEmployee(prod.Order_Details),
+                    prod.TotalSales,
+                    SalesRegions(prod.Order_Details),
                     prod.Discontinued
                     );
             }

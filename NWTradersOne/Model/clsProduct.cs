@@ -10,7 +10,7 @@ namespace NWTraders.Controller
     public partial class Product
     {
 
-        public int totalSales
+        public int TotalSales
         {
             get {
 
@@ -19,27 +19,29 @@ namespace NWTraders.Controller
             }
         }
 
+
       
 
         public string Product_Information
         {
             get
             {
-                string decoratedOrderInformation = "";
+                string decoratedProductInformation = "";
 
-                decoratedOrderInformation += "Product Details Details for the Product Id: " + this.ProductID + "\n";
-                decoratedOrderInformation += "--------------------------------------------- \n";
-                decoratedOrderInformation += "Order Date: " + this.OrderDate + "\n";
-                decoratedOrderInformation += "Customer Name: " + this.Customer.CompanyName + "\n";
-                decoratedOrderInformation += "Shipping Address: " + this.ShipAddress + "\n";
-                decoratedOrderInformation += this.ShipCity + ", " + this.ShipCountry + "\n";
-                decoratedOrderInformation += "Shipping Date: " + this.ShippedDate + "\n";
-                decoratedOrderInformation += "--------------------------------------------- \n";
-                decoratedOrderInformation += this.Employee.FirstName + " " + this.Employee.LastName + "has placed this orders ";
-                decoratedOrderInformation += "for a total of: " + this.orderTotal;
+                decoratedProductInformation += "Product Details for the Product Id: " + this.ProductID + "\n";
+                decoratedProductInformation += "------------------------***--------------------- \n";
+                decoratedProductInformation += "Product Name: " + this.ProductName + "\n";
+                decoratedProductInformation += "Unit Price: " + this.UnitPrice + "\n";
+                decoratedProductInformation += "Unit in Stock: " + this.UnitsInStock + "\n";
+                
+                decoratedProductInformation += "Units on Order: " + this.UnitsOnOrder + "\n";
+                decoratedProductInformation += "Supplier of this Product: " + this.Supplier.CompanyName + "\n";
+
+                decoratedProductInformation += "-----------------------***---------------------- \n";
+                decoratedProductInformation += "Total sales of this product: " + this.TotalSales;
 
 
-                return decoratedOrderInformation;
+                return decoratedProductInformation;
             }
         }
 
