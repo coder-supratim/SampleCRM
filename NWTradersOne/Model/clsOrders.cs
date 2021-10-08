@@ -35,7 +35,7 @@ namespace NWTraders.Controller
                 decoratedOrderInformation += "Shipping Date: " + this.ShippedDate + "\n";
                 decoratedOrderInformation += "--------------------------------------------- \n";
                 decoratedOrderInformation += this.Employee.FirstName + " " + this.Employee.LastName + "has placed this orders ";
-                decoratedOrderInformation += "for a total of: " + this.orderTotal;
+                decoratedOrderInformation += "for a total of: " + this.orderTotal.ToString("C");
 
 
                 return decoratedOrderInformation;

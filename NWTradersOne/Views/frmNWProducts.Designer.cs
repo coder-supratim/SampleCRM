@@ -50,6 +50,8 @@ namespace NWTraders.Views
             this.rtfSupplierDetail = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.grpSearchProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -65,7 +67,7 @@ namespace NWTraders.Views
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.BtnExit_Click);
+            this.btnClose.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // btnReset
             // 
@@ -77,7 +79,6 @@ namespace NWTraders.Views
             this.btnReset.TabIndex = 0;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // lblProductName
             // 
@@ -222,7 +223,7 @@ namespace NWTraders.Views
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 9.75F);
             this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(752, 250);
+            this.dgvProducts.Size = new System.Drawing.Size(769, 250);
             this.dgvProducts.TabIndex = 5;
             this.dgvProducts.SelectionChanged += new System.EventHandler(this.DgvProduct_SelectionChanged);
             // 
@@ -241,8 +242,6 @@ namespace NWTraders.Views
             this.dgvSuppliers.Size = new System.Drawing.Size(416, 250);
             this.dgvSuppliers.TabIndex = 5;
             this.dgvSuppliers.SelectionChanged += new System.EventHandler(this.DgvSupplier_SelectionChanged);
-
-            
             // 
             // rtfProductDetail
             // 
@@ -257,9 +256,9 @@ namespace NWTraders.Views
             // 
             this.rtfSupplierDetail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.rtfSupplierDetail.Font = new System.Drawing.Font("Corbel", 11F);
-            this.rtfSupplierDetail.Location = new System.Drawing.Point(380, 313);
+            this.rtfSupplierDetail.Location = new System.Drawing.Point(793, 313);
             this.rtfSupplierDetail.Name = "rtfSupplierDetail";
-            this.rtfSupplierDetail.Size = new System.Drawing.Size(451, 250);
+            this.rtfSupplierDetail.Size = new System.Drawing.Size(356, 250);
             this.rtfSupplierDetail.TabIndex = 6;
             this.rtfSupplierDetail.Text = "";
             // 
@@ -278,18 +277,42 @@ namespace NWTraders.Views
             // 
             this.label2.BackColor = System.Drawing.Color.AliceBlue;
             this.label2.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(376, 287);
+            this.label2.Location = new System.Drawing.Point(367, 287);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 23);
+            this.label2.Size = new System.Drawing.Size(146, 23);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Supplier Info";
+            this.label2.Text = "Supplier Data Grid";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.AliceBlue;
+            this.label3.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(789, 287);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Supplier Details";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.AliceBlue;
+            this.label4.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(376, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(146, 23);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Product Data Grid";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmNWProducts
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(1183, 800);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rtfSupplierDetail);
             this.Controls.Add(this.label1);
@@ -297,7 +320,6 @@ namespace NWTraders.Views
             this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.grpSearchProducts);
             this.Controls.Add(this.dgvSuppliers);
-
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
             this.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -337,5 +359,7 @@ namespace NWTraders.Views
         private System.Windows.Forms.RichTextBox rtfSupplierDetail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

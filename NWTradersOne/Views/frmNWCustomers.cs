@@ -220,7 +220,7 @@ namespace NWTraders.Views
                     order.OrderID, 
                     order.OrderDate,
                     order.ShippedDate,
-                    order.orderTotal
+                    order.orderTotal.ToString("C")
                                );
             }
 

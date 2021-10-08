@@ -84,7 +84,7 @@ namespace NWTraders.Views
 
             dgvProducts.Columns[3].Name = "TotalSales";
             dgvProducts.Columns[3].Width = 150;
-            dgvProducts.Columns[3].HeaderText = "Total Sales";
+            dgvProducts.Columns[3].HeaderText = "Total Sold";
 
             dgvProducts.Columns[4].Name = "Region";
             dgvProducts.Columns[4].Width = 200;
@@ -116,8 +116,8 @@ namespace NWTraders.Views
             dgvSuppliers.Columns[1].HeaderText = "Supplier Name";
 
             dgvSuppliers.Columns[2].Name = "SupplierContact";
-            dgvSuppliers.Columns[2].Width = 300;
-            dgvSuppliers.Columns[2].HeaderText = "Seller Contact";
+            dgvSuppliers.Columns[2].Width = 200;
+            dgvSuppliers.Columns[2].HeaderText = "Supplier Contact";
 
             dgvSuppliers.Columns[3].Name = "Region";
             dgvSuppliers.Columns[3].Width = 100;
@@ -203,7 +203,7 @@ namespace NWTraders.Views
                     prod.ProductID, // The ID will not actually be shown since it is given to a column that has the Visible property set to False.
                     prod.ProductName,
                     SellerEmployee(prod.Order_Details),
-                   prod.TotalSales.ToString("C"),
+                   prod.TotalSales,
                     SalesRegions(prod.Order_Details),
                     prod.Discontinued
                     );
@@ -425,6 +425,7 @@ namespace NWTraders.Views
             LoadDGV(nwEntities.Products);
         }
 
+       
     }
 }
 

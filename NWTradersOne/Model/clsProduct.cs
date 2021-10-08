@@ -38,7 +38,7 @@ namespace NWTraders.Controller
                 decoratedProductInformation += "Supplier of this Product: " + this.Supplier.CompanyName + "\n";
 
                 decoratedProductInformation += "-----------------------***---------------------- \n";
-                decoratedProductInformation += "Total sales of this product: " + this.TotalSales;
+                decoratedProductInformation += "Total products sold: " + this.TotalSales;
 
 
                 return decoratedProductInformation;
