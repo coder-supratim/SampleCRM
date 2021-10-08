@@ -240,6 +240,9 @@ namespace NWTraders.Views
             this.dgvSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSuppliers.Size = new System.Drawing.Size(416, 250);
             this.dgvSuppliers.TabIndex = 5;
+            this.dgvSuppliers.SelectionChanged += new System.EventHandler(this.DgvSupplier_SelectionChanged);
+
+            
             // 
             // rtfProductDetail
             // 

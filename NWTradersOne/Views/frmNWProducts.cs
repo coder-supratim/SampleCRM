@@ -19,6 +19,8 @@ namespace NWTraders.Views
         public NorthwindEntities nwEntities = new NorthwindEntities();
 
         private Product selectedProduct;
+        private Supplier selectedSupplier;
+
 
 
         public frmNWProducts()
@@ -101,29 +103,29 @@ namespace NWTraders.Views
         public void FormatSupplierDGV()
         {
             // First clear all the rows in the DGV.
-            dgvProducts.Rows.Clear();
+            dgvSuppliers.Rows.Clear();
 
             // This is the number of fields in the Products table - we will create that many columns in the DGV.
-            dgvProducts.ColumnCount = 5;
+            dgvSuppliers.ColumnCount = 5;
 
-            dgvProducts.Columns[0].Name = "SupplierID";
-            dgvProducts.Columns[0].Visible = false; /// The primary key is not made visible per best practice.
+            dgvSuppliers.Columns[0].Name = "SupplierID";
+            dgvSuppliers.Columns[0].Visible = false; /// The primary key is not made visible per best practice.
 
-            dgvProducts.Columns[1].Name = "SupplierName";
-            dgvProducts.Columns[1].Width = 225;
-            dgvProducts.Columns[1].HeaderText = "Supplier Name";
+            dgvSuppliers.Columns[1].Name = "SupplierName";
+            dgvSuppliers.Columns[1].Width = 225;
+            dgvSuppliers.Columns[1].HeaderText = "Supplier Name";
 
-            dgvProducts.Columns[2].Name = "SupplierContact";
-            dgvProducts.Columns[2].Width = 300;
-            dgvProducts.Columns[2].HeaderText = "Seller Contact";
+            dgvSuppliers.Columns[2].Name = "SupplierContact";
+            dgvSuppliers.Columns[2].Width = 300;
+            dgvSuppliers.Columns[2].HeaderText = "Seller Contact";
 
-            dgvProducts.Columns[3].Name = "Region";
-            dgvProducts.Columns[3].Width = 100;
-            dgvProducts.Columns[3].HeaderText = "Region";
+            dgvSuppliers.Columns[3].Name = "Region";
+            dgvSuppliers.Columns[3].Width = 100;
+            dgvSuppliers.Columns[3].HeaderText = "Region";
 
-            dgvProducts.Columns[4].Name = "City";
-            dgvProducts.Columns[4].Width = 200;
-            dgvProducts.Columns[4].HeaderText = "City";
+            dgvSuppliers.Columns[4].Name = "City";
+            dgvSuppliers.Columns[4].Width = 200;
+            dgvSuppliers.Columns[4].HeaderText = "City";
 
         }
 
@@ -236,7 +238,7 @@ namespace NWTraders.Views
             // add it as a row in the dgv
             foreach (Supplier sup in suppliers)
             {
-                dgvProducts.Rows.Add(
+                dgvSuppliers.Rows.Add(
                     sup.SupplierID, // The ID will not actually be shown since it is given to a column that has the Visible property set to False.
                     sup.CompanyName,
                     sup.ContactName,
@@ -369,13 +371,44 @@ namespace NWTraders.Views
                 if (selectedProduct != null)
                 {
                     this.rtfProductDetail.Text = selectedProduct.Product_Information;
-                    this.rtfSupplierDetail.Text = selectedProduct.Supplier.Supplier_Information;
                 }
 
             }
 
         }
-        private void BtnExit_Click(object sender, EventArgs e)
+
+        private void DgvSupplier_SelectionChanged(object sender, EventArgs e)
+        {
+            int selectedRowIndex = -1;
+
+            // When a row in the DGV is selected, you can find which row index is selected.
+            // Generally, you can zero or select multiple rows in a dgv.
+            // If a row is selected, then the SelectedRowsCollection has a count of > 0 
+            //and we can get the index of the selected row[0] - which is the first (and in our case the only row) selected.
+            if (dgvSuppliers.SelectedRows.Count > 0)
+                selectedRowIndex = dgvSuppliers.SelectedRows[0].Index;
+
+            // This code was having an issue in the assignment sample project, not selecting the first record of customer data. Fixed it. 
+            if (selectedRowIndex > -1)
+            {
+
+                // Get the value of the ProductID field in the selected Row.
+                int selectedSupplierID = ToInt32(dgvSuppliers.Rows[selectedRowIndex].Cells["SupplierID"].Value.ToString());
+
+                // Now I have the primary key - I can find the selected customer object.
+                // Even though there will be only one product, 
+                selectedSupplier = nwEntities.Suppliers.
+                    Where(s => s.SupplierID == selectedSupplierID).
+                    Select(s => s).FirstOrDefault();
+
+                if (selectedSupplier != null)
+                {
+                    this.rtfSupplierDetail.Text = selectedSupplier.Supplier_Information;
+                }
+
+            }
+        }
+            private void BtnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
