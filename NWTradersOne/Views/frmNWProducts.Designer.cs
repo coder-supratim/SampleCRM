@@ -29,7 +29,7 @@ namespace NWTraders.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblProductName = new System.Windows.Forms.Label();
@@ -49,6 +49,7 @@ namespace NWTraders.Views
             this.rtfProductDetail = new System.Windows.Forms.RichTextBox();
             this.rtfSupplierDetail = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.grpSearchProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSuppliers)).BeginInit();
@@ -96,6 +97,7 @@ namespace NWTraders.Views
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(150, 27);
             this.txtProductName.TabIndex = 2;
+            this.txtProductName.TextChanged += new System.EventHandler(this.TxtProductName_TextChanged);
             // 
             // lblTotalSales
             // 
@@ -116,6 +118,7 @@ namespace NWTraders.Views
             this.txtTotalSales.Name = "txtTotalSales";
             this.txtTotalSales.Size = new System.Drawing.Size(150, 27);
             this.txtTotalSales.TabIndex = 2;
+            this.txtTotalSales.TextChanged += new System.EventHandler(this.TxtTotalSales_TextChanged);
             // 
             // lblSellerEmployee
             // 
@@ -157,6 +160,7 @@ namespace NWTraders.Views
             this.cmbSalesRegion.Name = "cmbSalesRegion";
             this.cmbSalesRegion.Size = new System.Drawing.Size(150, 27);
             this.cmbSalesRegion.TabIndex = 3;
+            this.cmbSalesRegion.SelectedIndexChanged += new System.EventHandler(this.CmbSalesRegion_SelectedIndexChanged);
             // 
             // lblDiscontinued
             // 
@@ -173,6 +177,7 @@ namespace NWTraders.Views
             this.chkDiscontinued.Name = "chkDiscontinued";
             this.chkDiscontinued.Size = new System.Drawing.Size(29, 24);
             this.chkDiscontinued.TabIndex = 4;
+            this.chkDiscontinued.CheckedChanged += new System.EventHandler(this.chkDiscontinued_CheckedChanged);
             // 
             // grpSearchProducts
             // 
@@ -213,11 +218,12 @@ namespace NWTraders.Views
             this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 82;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 9.75F);
-            this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9.75F);
+            this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(752, 250);
             this.dgvProducts.TabIndex = 5;
+            this.dgvProducts.SelectionChanged += new System.EventHandler(this.DgvProduct_SelectionChanged);
             // 
             // dgvSuppliers
             // 
@@ -229,7 +235,7 @@ namespace NWTraders.Views
             this.dgvSuppliers.MultiSelect = false;
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.RowHeadersWidth = 82;
-            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSuppliers.Size = new System.Drawing.Size(416, 250);
             this.dgvSuppliers.TabIndex = 5;
@@ -247,9 +253,9 @@ namespace NWTraders.Views
             // 
             this.rtfSupplierDetail.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.rtfSupplierDetail.Font = new System.Drawing.Font("Corbel", 11F);
-            this.rtfSupplierDetail.Location = new System.Drawing.Point(859, 313);
+            this.rtfSupplierDetail.Location = new System.Drawing.Point(380, 313);
             this.rtfSupplierDetail.Name = "rtfSupplierDetail";
-            this.rtfSupplierDetail.Size = new System.Drawing.Size(273, 250);
+            this.rtfSupplierDetail.Size = new System.Drawing.Size(343, 250);
             this.rtfSupplierDetail.TabIndex = 6;
             this.rtfSupplierDetail.Text = "";
             // 
@@ -264,16 +270,27 @@ namespace NWTraders.Views
             this.label1.Text = "Product Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.AliceBlue;
+            this.label2.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(376, 287);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 23);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Supplier Info";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmNWProducts
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Ivory;
             this.ClientSize = new System.Drawing.Size(1183, 800);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.rtfSupplierDetail);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtfProductDetail);
             this.Controls.Add(this.dgvProducts);
-            this.Controls.Add(this.dgvSuppliers);
             this.Controls.Add(this.grpSearchProducts);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
@@ -313,5 +330,6 @@ namespace NWTraders.Views
         private System.Windows.Forms.RichTextBox rtfProductDetail;
         private System.Windows.Forms.RichTextBox rtfSupplierDetail;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

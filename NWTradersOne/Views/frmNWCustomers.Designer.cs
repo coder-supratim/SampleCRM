@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblCompany = new System.Windows.Forms.Label();
@@ -48,6 +48,9 @@
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.rtfCustomerInformation = new System.Windows.Forms.RichTextBox();
             this.rtfOrderInformation = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.grpSearchCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
@@ -94,13 +97,13 @@
             this.txtCompany.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCompany.Location = new System.Drawing.Point(116, 43);
             this.txtCompany.Name = "txtCompany";
-            this.txtCompany.Size = new System.Drawing.Size(150, 39);
+            this.txtCompany.Size = new System.Drawing.Size(150, 27);
             this.txtCompany.TabIndex = 2;
             this.txtCompany.TextChanged += new System.EventHandler(this.TxtCompany_TextChanged);
             // 
             // lblContact
             // 
-            this.lblContact.BackColor = System.Drawing.Color.White;
+            this.lblContact.BackColor = System.Drawing.Color.AliceBlue;
             this.lblContact.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContact.Location = new System.Drawing.Point(20, 76);
             this.lblContact.Name = "lblContact";
@@ -115,13 +118,13 @@
             this.txtContact.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(116, 73);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(150, 39);
+            this.txtContact.Size = new System.Drawing.Size(150, 27);
             this.txtContact.TabIndex = 2;
             this.txtContact.TextChanged += new System.EventHandler(this.TxtContact_TextChanged);
             // 
             // lblCity
             // 
-            this.lblCity.BackColor = System.Drawing.Color.White;
+            this.lblCity.BackColor = System.Drawing.Color.AliceBlue;
             this.lblCity.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCity.Location = new System.Drawing.Point(20, 141);
             this.lblCity.Name = "lblCity";
@@ -136,13 +139,13 @@
             this.txtCity.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(116, 141);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(150, 39);
+            this.txtCity.Size = new System.Drawing.Size(150, 27);
             this.txtCity.TabIndex = 2;
             this.txtCity.TextChanged += new System.EventHandler(this.TxtCity_TextChanged);
             // 
             // lblRegion
             // 
-            this.lblRegion.BackColor = System.Drawing.Color.White;
+            this.lblRegion.BackColor = System.Drawing.Color.AliceBlue;
             this.lblRegion.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegion.Location = new System.Drawing.Point(20, 178);
             this.lblRegion.Name = "lblRegion";
@@ -158,7 +161,7 @@
             this.cmbRegion.FormattingEnabled = true;
             this.cmbRegion.Location = new System.Drawing.Point(116, 171);
             this.cmbRegion.Name = "cmbRegion";
-            this.cmbRegion.Size = new System.Drawing.Size(150, 40);
+            this.cmbRegion.Size = new System.Drawing.Size(150, 27);
             this.cmbRegion.TabIndex = 3;
             this.cmbRegion.SelectedIndexChanged += new System.EventHandler(this.CmbRegion_SelectedIndexChanged);
             // 
@@ -180,7 +183,7 @@
             this.cmbCountry.FormattingEnabled = true;
             this.cmbCountry.Location = new System.Drawing.Point(116, 204);
             this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(150, 40);
+            this.cmbCountry.Size = new System.Drawing.Size(150, 27);
             this.cmbCountry.TabIndex = 3;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.CmbCountry_SelectedIndexChanged);
             // 
@@ -215,17 +218,17 @@
             this.cmbContactTitle.FormattingEnabled = true;
             this.cmbContactTitle.Location = new System.Drawing.Point(116, 105);
             this.cmbContactTitle.Name = "cmbContactTitle";
-            this.cmbContactTitle.Size = new System.Drawing.Size(150, 40);
+            this.cmbContactTitle.Size = new System.Drawing.Size(150, 27);
             this.cmbContactTitle.TabIndex = 3;
             this.cmbContactTitle.SelectedIndexChanged += new System.EventHandler(this.CmbContactTitle_SelectedIndexChanged);
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.Color.AliceBlue;
             this.label1.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 106);
+            this.label1.Location = new System.Drawing.Point(0, 109);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 23);
+            this.label1.Size = new System.Drawing.Size(110, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Contact Title";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -239,8 +242,8 @@
             this.dgvCustomers.MultiSelect = false;
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.RowHeadersWidth = 82;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 9.75F);
-            this.dgvCustomers.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Corbel", 9.75F);
+            this.dgvCustomers.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomers.Size = new System.Drawing.Size(919, 250);
             this.dgvCustomers.TabIndex = 5;
@@ -255,7 +258,7 @@
             this.dgvOrders.MultiSelect = false;
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 82;
-            this.dgvOrders.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvOrders.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(416, 250);
             this.dgvOrders.TabIndex = 5;
@@ -264,9 +267,9 @@
             // rtfCustomerInformation
             // 
             this.rtfCustomerInformation.Font = new System.Drawing.Font("Corbel", 11F);
-            this.rtfCustomerInformation.Location = new System.Drawing.Point(12, 268);
+            this.rtfCustomerInformation.Location = new System.Drawing.Point(16, 313);
             this.rtfCustomerInformation.Name = "rtfCustomerInformation";
-            this.rtfCustomerInformation.Size = new System.Drawing.Size(273, 121);
+            this.rtfCustomerInformation.Size = new System.Drawing.Size(273, 227);
             this.rtfCustomerInformation.TabIndex = 6;
             this.rtfCustomerInformation.Text = "";
             // 
@@ -280,11 +283,46 @@
             this.rtfOrderInformation.TabIndex = 6;
             this.rtfOrderInformation.Text = "";
             // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.AliceBlue;
+            this.label2.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 287);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Customer Details";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.AliceBlue;
+            this.label3.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(303, 287);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(140, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Customer Orders";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.AliceBlue;
+            this.label4.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(748, 287);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 23);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Order Detail";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmNWCustomers
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Ivory;
-            this.ClientSize = new System.Drawing.Size(1225, 800);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(1250, 800);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.rtfOrderInformation);
             this.Controls.Add(this.rtfCustomerInformation);
             this.Controls.Add(this.dgvCustomers);
@@ -292,6 +330,7 @@
             this.Controls.Add(this.grpSearchCustomers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmNWCustomers";
@@ -326,6 +365,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtfCustomerInformation;
         private System.Windows.Forms.RichTextBox rtfOrderInformation;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

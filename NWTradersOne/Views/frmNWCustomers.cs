@@ -556,5 +556,6 @@ namespace NWTraders.Views
             LoadDGV(nwEntities.Customers);
         }
 
+       
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NWTraders.Controller;
 using System.Diagnostics;
+using static System.Convert;
 
 namespace NWTraders.Views
 {
@@ -17,7 +18,8 @@ namespace NWTraders.Views
 
         public NorthwindEntities nwEntities = new NorthwindEntities();
 
-       
+        private Product selectedProduct;
+
 
         public frmNWProducts()
         {
@@ -30,20 +32,33 @@ namespace NWTraders.Views
            
         }
 
+        public List<String> AllRegions()
+        {
+            // From the customers table, 
+            // where the Region is not null or empty, 
+            // select every Region
+            // keep only the distinct ones 
+            // then convert it to a list.
+            List<String> allRegions = new List<string>();
+            allRegions = nwEntities.Customers.
+                Where(c => string.IsNullOrEmpty(c.Region) == false).
+                Select(c => c.Region).
+                Distinct().
+                ToList();
 
+            return allRegions;
+        }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-          
 
-            // Load the DGV with all the customers.
+            cmbSalesRegion.DataSource = AllRegions();
+
+            // Load the DGV with all the products.
             LoadDGV(nwEntities.Products);
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+      
 
         public void FormatDGV()
         {
@@ -61,7 +76,7 @@ namespace NWTraders.Views
             dgvProducts.Columns[1].HeaderText = "Product Name";
 
             dgvProducts.Columns[2].Name = "SellerEmployee";
-            dgvProducts.Columns[2].Width = 500;
+            dgvProducts.Columns[2].Width = 300;
             dgvProducts.Columns[2].HeaderText = "Seller Employees";
 
             dgvProducts.Columns[3].Name = "TotalSales";
@@ -69,7 +84,7 @@ namespace NWTraders.Views
             dgvProducts.Columns[3].HeaderText = "Total Sales";
 
             dgvProducts.Columns[4].Name = "Region";
-            dgvProducts.Columns[4].Width = 400;
+            dgvProducts.Columns[4].Width = 200;
             dgvProducts.Columns[4].HeaderText = "Region of Sales";
 
             dgvProducts.Columns[5].Name = "Discontinued";
@@ -98,13 +113,13 @@ namespace NWTraders.Views
 
                 foreach (var item in queryResults)
                 {
-                    if (string.IsNullOrEmpty(item.FullName))
+                    if (!string.IsNullOrEmpty(item.FullName))
                     {
                         sellerEmployee = string.Concat(sellerEmployee, item.FullName, " ,");
                     }
                 }
             }
-            Debug.WriteLine($"Employee Names: {sellerEmployee}");
+           // Debug.WriteLine($"Employee Names: {sellerEmployee}");
             return sellerEmployee;
         }
 
@@ -121,14 +136,14 @@ namespace NWTraders.Views
 
                 foreach (var item in queryResults)
                 {
-                    if (string.IsNullOrEmpty(item.ShipRegion))
+                    if (!string.IsNullOrEmpty(item.ShipRegion))
                     {
                         salesRegion = string.Concat(salesRegion, item.ShipRegion, " ,");
                     }
                     
                 }
             }
-            Debug.WriteLine($"Regions: {salesRegion}");
+            //Debug.WriteLine($"Regions: {salesRegion}");
             return salesRegion;
         }
 
@@ -171,6 +186,146 @@ namespace NWTraders.Views
         }
 
 
-       
+        private void CmbSalesRegion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSalesRegion.SelectedIndex != -1)
+            {
+                IEnumerable<Product> productsToShow = SearchByRegion(cmbSalesRegion.SelectedItem.ToString().Trim());
+                LoadDGV(productsToShow);
+
+            }
+        }
+        public IEnumerable<Product> SearchByRegion(string regionName)
+
+        {
+            // If the City string is nothing or empty, return all the products.
+            if (string.IsNullOrEmpty(regionName))
+                return nwEntities.Products;
+
+            IEnumerable<Product> foundProducts =
+                nwEntities.Products.
+                Where(p => p.Supplier.Region.Contains(regionName)).
+                Select(p => p).
+                OrderBy(p => p.ProductName);
+
+            return foundProducts;
+        }
+
+        private void TxtProductName_TextChanged(object sender, EventArgs e)
+        {
+            // Get the search text the user types in:
+            string productSearchString = txtProductName.Text.Trim();
+
+            // pass the search string to the search function.
+            IEnumerable<Product> foundProducts = SearchByProductName(productSearchString);
+            LoadDGV(foundProducts);
+
+
+        }
+
+        private void TxtTotalSales_TextChanged(object sender, EventArgs e)
+        {
+            // Get the search text the user types in:
+            string productSearchString = txtProductName.Text.Trim();
+
+            // pass the search string to the search function.
+            IEnumerable<Product> foundProducts = SearchByTotalSales(productSearchString);
+            LoadDGV(foundProducts);
+
+
+        }
+
+        public IEnumerable<Product> SearchByProductName(string productName)
+        {
+            // If the City string is nothing or empty, return all the products.
+            if (string.IsNullOrEmpty(productName))
+                return nwEntities.Products;
+
+            IEnumerable<Product> foundProducts =
+                nwEntities.Products.
+                Where(p => p.ProductName.Contains(productName)).
+                Select(p => p).
+                OrderBy(p => p.ProductName);
+
+            return foundProducts;
+        }
+        public IEnumerable<Product> SearchByTotalSales(string totalSales)
+        {
+            // If the City string is nothing or empty, return all the products.
+            if (string.IsNullOrEmpty(totalSales))
+                return nwEntities.Products;
+
+            IEnumerable<Product> foundProducts =
+                nwEntities.Products.
+                Where(p => p.TotalSales == ToInt32(totalSales)).
+                Select(p => p).
+                OrderBy(p => p.ProductName);
+
+            return foundProducts;
+        }
+
+        private void chkDiscontinued_CheckedChanged(object sender, EventArgs e)
+        {
+            IEnumerable<Product> foundProducts =
+               nwEntities.Products.
+               Where(p => p.Discontinued == false).
+               Select(p => p).
+               OrderBy(p => p.ProductName);
+
+            LoadDGV(foundProducts);
+        }
+        private void DgvProduct_SelectionChanged(object sender, EventArgs e)
+        {
+            int selectedRowIndex = -1;
+
+            // When a row in the DGV is selected, you can find which row index is selected.
+            // Generally, you can zero or select multiple rows in a dgv.
+            // If a row is selected, then the SelectedRowsCollection has a count of > 0 
+            //and we can get the index of the selected row[0] - which is the first (and in our case the only row) selected.
+            if (dgvProducts.SelectedRows.Count > 0)
+                selectedRowIndex = dgvProducts.SelectedRows[0].Index;
+
+            // This code was having an issue in the assignment sample project, not selecting the first record of customer data. Fixed it. 
+            if (selectedRowIndex > -1)
+            {
+
+                // Get the value of the ProductID field in the selected Row.
+                int selectedProductID = ToInt32(dgvProducts.Rows[selectedRowIndex].Cells["ProductID"].Value.ToString());
+
+                // Now I have the primary key - I can find the selected customer object.
+                // Even though there will be only one product, 
+                selectedProduct = nwEntities.Products.
+                    Where(p => p.ProductID == selectedProductID).
+                    Select(p => p).FirstOrDefault();
+
+                if (selectedProduct != null)
+                {
+                    this.rtfProductDetail.Text = selectedProduct.Product_Information;
+                    this.rtfSupplierDetail.Text = selectedProduct.Supplier.Supplier_Information;
+                }
+
+            }
+
+        }
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            cmbSalesRegion.SelectedIndex = -1;
+            chkDiscontinued.Checked = false;
+            txtProductName.ResetText();
+            txtSellerEmployee.ResetText();
+            txtTotalSales.ResetText();
+
+            // Load the DGV with all the customers.
+            LoadDGV(nwEntities.Products);
+        }
+
     }
 }
+
+
+

@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Model\clsCustomer.cs" />
     <Compile Include="Model\clsOrderDetails.cs" />
+    <Compile Include="Model\clsSupplier.cs" />
     <Compile Include="Model\clsProduct.cs" />
     <Compile Include="Model\clsOrders.cs" />
     <Compile Include="Views\frmNWCustomers.cs">
