@@ -293,6 +293,8 @@ namespace NWTraders.Views
             this.Controls.Add(this.rtfProductDetail);
             this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.grpSearchProducts);
+            this.Controls.Add(this.dgvSuppliers);
+
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnReset);
             this.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

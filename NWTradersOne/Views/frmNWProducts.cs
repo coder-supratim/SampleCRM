@@ -56,6 +56,7 @@ namespace NWTraders.Views
 
             // Load the DGV with all the products.
             LoadDGV(nwEntities.Products);
+            LoadSupplierDGV(nwEntities.Suppliers);
         }
 
       
@@ -94,6 +95,35 @@ namespace NWTraders.Views
            
 
 
+
+        }
+
+        public void FormatSupplierDGV()
+        {
+            // First clear all the rows in the DGV.
+            dgvProducts.Rows.Clear();
+
+            // This is the number of fields in the Products table - we will create that many columns in the DGV.
+            dgvProducts.ColumnCount = 5;
+
+            dgvProducts.Columns[0].Name = "SupplierID";
+            dgvProducts.Columns[0].Visible = false; /// The primary key is not made visible per best practice.
+
+            dgvProducts.Columns[1].Name = "SupplierName";
+            dgvProducts.Columns[1].Width = 225;
+            dgvProducts.Columns[1].HeaderText = "Supplier Name";
+
+            dgvProducts.Columns[2].Name = "SupplierContact";
+            dgvProducts.Columns[2].Width = 300;
+            dgvProducts.Columns[2].HeaderText = "Seller Contact";
+
+            dgvProducts.Columns[3].Name = "Region";
+            dgvProducts.Columns[3].Width = 100;
+            dgvProducts.Columns[3].HeaderText = "Region";
+
+            dgvProducts.Columns[4].Name = "City";
+            dgvProducts.Columns[4].Width = 200;
+            dgvProducts.Columns[4].HeaderText = "City";
 
         }
 
@@ -185,6 +215,44 @@ namespace NWTraders.Views
 
         }
 
+
+        public void LoadSupplierDGV(IEnumerable<Supplier> suppliers)
+        {
+            // If there are no suppliers, do nothing and return from the function.
+            if (suppliers == null) return;
+
+            // The following lines of code will run only if the list of customer objects is not null - in other words, if there are customers.
+
+            // If there are no columns in the DGV, then it has not been initialized
+            //  Initialize and format the DGV using the function we wrote, before adding anything.
+            if (dgvSuppliers.RowCount == 0)
+                FormatSupplierDGV();
+
+
+            // First we wil clear the DGV Rows if any exist.
+            dgvSuppliers.Rows.Clear();
+
+            // Go through every customer in the customer collection and 
+            // add it as a row in the dgv
+            foreach (Supplier sup in suppliers)
+            {
+                dgvProducts.Rows.Add(
+                    sup.SupplierID, // The ID will not actually be shown since it is given to a column that has the Visible property set to False.
+                    sup.CompanyName,
+                    sup.ContactName,
+                    sup.Region,
+                    sup.City
+                   
+                    );
+            }
+
+            // Clear any selections that may have been made.
+            dgvSuppliers.ClearSelection();
+
+            // As a beginning default view, we can sort the dgv in alphabetical order of Company name (Field 1)
+            dgvSuppliers.Sort(dgvSuppliers.Columns[1], ListSortDirection.Ascending);
+
+        }
 
         private void CmbSalesRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
