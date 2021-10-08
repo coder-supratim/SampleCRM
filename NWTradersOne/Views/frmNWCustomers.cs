@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Convert;
+using System.Diagnostics;
 
 
 namespace NWTraders.Views
@@ -144,7 +145,19 @@ namespace NWTraders.Views
         }
 
         public void LoadDGV(IEnumerable<Customer> customers)
+       
         {
+            //var queryResults =
+            //from e in nwEntities.Employees
+            //select new { EmployeeID = e.EmployeeID, FullName = (e.FirstName + " " + e.LastName) };
+            //Debug.WriteLine("EmployeeID\t: FullName\n-----\t ------");
+
+            //foreach (var item in queryResults)
+            //{
+            //    Debug.WriteLine($"{item.EmployeeID}\t: {item.FullName}");
+            //}
+
+
             // If there are no customers, do nothing and return from the function.
             if (customers == null) return;
 

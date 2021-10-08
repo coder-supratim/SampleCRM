@@ -17,7 +17,7 @@ namespace NWTraders.Views
 
         public NorthwindEntities nwEntities = new NorthwindEntities();
 
-        private Product selectedProduct;
+       
 
         public frmNWProducts()
         {
@@ -25,10 +25,12 @@ namespace NWTraders.Views
         }
 
         
-        private void frmNWProducts_Load(object sender, EventArgs e)
+        private void frmNWProducts_Load(object sender, EventArgs ev)
         {
-
+           
         }
+
+
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
@@ -58,17 +60,17 @@ namespace NWTraders.Views
             dgvProducts.Columns[1].Width = 225;
             dgvProducts.Columns[1].HeaderText = "Product Name";
 
-            dgvProducts.Columns[2].Name = "SupplierName";
+            dgvProducts.Columns[2].Name = "SellerEmployee";
             dgvProducts.Columns[2].Width = 150;
-            dgvProducts.Columns[2].HeaderText = "Supplier Name";
+            dgvProducts.Columns[2].HeaderText = "Supplier Employee";
 
-            dgvProducts.Columns[3].Name = "SupplierContact";
+            dgvProducts.Columns[3].Name = "TotalSales";
             dgvProducts.Columns[3].Width = 150;
-            dgvProducts.Columns[3].HeaderText = "Supplie Contact";
+            dgvProducts.Columns[3].HeaderText = "Total Sales";
 
-            dgvProducts.Columns[4].Name = "UnitPrice";
+            dgvProducts.Columns[4].Name = "Region";
             dgvProducts.Columns[4].Width = 150;
-            dgvProducts.Columns[4].HeaderText = "Unit Price";
+            dgvProducts.Columns[4].HeaderText = "Region of Sales";
 
             dgvProducts.Columns[5].Name = "Discontinued";
             dgvProducts.Columns[5].Width = 125;
@@ -80,7 +82,19 @@ namespace NWTraders.Views
 
         }
 
-        public void LoadDGV(IEnumerable<Product> products)
+        private string sellerEmployee(int OrderID)
+        {
+
+
+            var queryResults =
+            from e in nwEntities.Employees
+            join o in nwEntities.Orders on e.EmployeeID equals o.EmployeeID
+            where o.OrderID == OrderID
+            select new { FullName = (e.FirstName + " " + e.LastName) };
+            return queryResults.FirstOrDefault().FullName;
+        }
+
+    public void LoadDGV(IEnumerable<Product> products)
         {
             // If there are no customers, do nothing and return from the function.
             if (products == null) return;
@@ -102,8 +116,8 @@ namespace NWTraders.Views
             {
                 dgvProducts.Rows.Add(
                     prod.ProductID, // The ID will not actually be shown since it is given to a column that has the Visible property set to False.
-                    prod.ProductName,
-                    prod.Supplier.CompanyName,
+                    sellerEmployee(prod.Order_Details.FirstOrDefault().OrderID),
+                    prod.totalSales,
                     prod.Supplier.ContactName,
                     prod.UnitPrice,
                     prod.Discontinued
@@ -117,5 +131,8 @@ namespace NWTraders.Views
             dgvProducts.Sort(dgvProducts.Columns[1], ListSortDirection.Ascending);
 
         }
+
+
+       
     }
 }
