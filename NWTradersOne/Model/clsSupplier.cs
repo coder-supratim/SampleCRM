@@ -22,17 +22,19 @@ namespace NWTraders.Controller
                 string decoratedSupplierInformation = "";
 
                 decoratedSupplierInformation += "-------------Supplier Information------------ \n";
-                decoratedSupplierInformation += "Supplier Company Name: " + this.CompanyName + "\n";
-                decoratedSupplierInformation += "Supplier Contact Name: " + this.ContactName + "\n";
-                decoratedSupplierInformation += this.ContactTitle + "\n";
+                decoratedSupplierInformation += "Supplier Company Name:  " + this.CompanyName + "\n";
+                decoratedSupplierInformation += "Supplier Contact Name:  "+ this.ContactName + "\n";
+                decoratedSupplierInformation += this.ContactTitle + "\n " ;
                 decoratedSupplierInformation += this.Address + "\n";
                 decoratedSupplierInformation += this.City + ", " + this.Country + "\n";
                 decoratedSupplierInformation += "-----------------------***---------------------- \n";
                 decoratedSupplierInformation += "Supplied Products: \n";
                 foreach (Product p in this.Products)
                 {
-
-                    decoratedSupplierInformation += p.ProductName + "\tDiscontinued: " + p.Discontinued + "\n";
+                    if (!string.IsNullOrEmpty(p.ProductName)) { 
+                    string discon = p.Discontinued ? "YES" : "NO";
+                    decoratedSupplierInformation += p.ProductName + "\tDiscontinued: " + discon + "\n";
+                }
                 }
               
                 decoratedSupplierInformation += "-----------------------***---------------------- \n";

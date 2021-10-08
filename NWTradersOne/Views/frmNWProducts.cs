@@ -171,7 +171,7 @@ namespace NWTraders.Views
                     prod.ProductID, // The ID will not actually be shown since it is given to a column that has the Visible property set to False.
                     prod.ProductName,
                     SellerEmployee(prod.Order_Details),
-                    prod.TotalSales,
+                   prod.TotalSales.ToString("C"),
                     SalesRegions(prod.Order_Details),
                     prod.Discontinued
                     );
@@ -320,7 +320,7 @@ namespace NWTraders.Views
             txtSellerEmployee.ResetText();
             txtTotalSales.ResetText();
 
-            // Load the DGV with all the customers.
+            // Load the DGV with all the products.
             LoadDGV(nwEntities.Products);
         }
 

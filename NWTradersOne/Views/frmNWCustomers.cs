@@ -103,7 +103,7 @@ namespace NWTraders.Views
             dgvCustomers.Columns[5].HeaderText = "Country";
 
             dgvCustomers.Columns[6].Name = "Region";
-            dgvCustomers.Columns[6].Width = 100;
+            dgvCustomers.Columns[6].Width = 50;
             dgvCustomers.Columns[6].HeaderText = "Region";
 
             dgvCustomers.Columns[7].Name = "TotalSales";
@@ -125,9 +125,9 @@ namespace NWTraders.Views
 
 
             dgvOrders.Columns[0].Name = "OrderID";
-            dgvOrders.Columns[0].Width = 225;
+            dgvOrders.Columns[0].Width = 100;
             dgvOrders.Columns[0].HeaderText = "Order ID";
-
+            dgvOrders.Columns[0].Visible = false;
             dgvOrders.Columns[1].Name = "OrderDate";
             dgvOrders.Columns[1].Width = 150;
             dgvOrders.Columns[1].HeaderText = "Order Placed";
@@ -137,7 +137,7 @@ namespace NWTraders.Views
             dgvOrders.Columns[2].HeaderText = "Shipped Date";
 
             dgvOrders.Columns[3].Name = "OrderTotal";
-            dgvOrders.Columns[3].Width = 125;
+            dgvOrders.Columns[3].Width = 100;
             dgvOrders.Columns[3].HeaderText = "Order Total";
 
 

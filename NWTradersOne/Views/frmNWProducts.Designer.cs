@@ -29,7 +29,7 @@ namespace NWTraders.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblProductName = new System.Windows.Forms.Label();
@@ -77,6 +77,7 @@ namespace NWTraders.Views
             this.btnReset.TabIndex = 0;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnReset_Click);
             // 
             // lblProductName
             // 
@@ -218,8 +219,8 @@ namespace NWTraders.Views
             this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersWidth = 82;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Corbel", 9.75F);
-            this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Corbel", 9.75F);
+            this.dgvProducts.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProducts.Size = new System.Drawing.Size(752, 250);
             this.dgvProducts.TabIndex = 5;
@@ -235,7 +236,7 @@ namespace NWTraders.Views
             this.dgvSuppliers.MultiSelect = false;
             this.dgvSuppliers.Name = "dgvSuppliers";
             this.dgvSuppliers.RowHeadersWidth = 82;
-            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSuppliers.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSuppliers.Size = new System.Drawing.Size(416, 250);
             this.dgvSuppliers.TabIndex = 5;
@@ -255,7 +256,7 @@ namespace NWTraders.Views
             this.rtfSupplierDetail.Font = new System.Drawing.Font("Corbel", 11F);
             this.rtfSupplierDetail.Location = new System.Drawing.Point(380, 313);
             this.rtfSupplierDetail.Name = "rtfSupplierDetail";
-            this.rtfSupplierDetail.Size = new System.Drawing.Size(343, 250);
+            this.rtfSupplierDetail.Size = new System.Drawing.Size(451, 250);
             this.rtfSupplierDetail.TabIndex = 6;
             this.rtfSupplierDetail.Text = "";
             // 
@@ -268,7 +269,7 @@ namespace NWTraders.Views
             this.label1.Size = new System.Drawing.Size(121, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Product Details";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -279,7 +280,7 @@ namespace NWTraders.Views
             this.label2.Size = new System.Drawing.Size(103, 23);
             this.label2.TabIndex = 7;
             this.label2.Text = "Supplier Info";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmNWProducts
             // 

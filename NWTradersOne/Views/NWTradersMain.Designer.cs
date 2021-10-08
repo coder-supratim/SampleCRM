@@ -66,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(150, 810);
+            this.panel1.Size = new System.Drawing.Size(188, 810);
             this.panel1.TabIndex = 4;
             // 
             // btnExit
@@ -81,12 +81,13 @@
             // 
             // btnCustomers
             // 
+            this.btnCustomers.BackColor = System.Drawing.Color.AliceBlue;
             this.btnCustomers.Location = new System.Drawing.Point(12, 22);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(117, 39);
             this.btnCustomers.TabIndex = 0;
             this.btnCustomers.Text = "Customers";
-            this.btnCustomers.UseVisualStyleBackColor = true;
+            this.btnCustomers.UseVisualStyleBackColor = false;
             this.btnCustomers.Click += new System.EventHandler(this.BtnCustomers_Click);
             // 
             // btnProducts
