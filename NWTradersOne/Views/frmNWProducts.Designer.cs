@@ -67,7 +67,7 @@ namespace NWTraders.Views
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.BtnReset_Click);
+            //this.btnClose.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // btnReset
             // 
@@ -79,6 +79,8 @@ namespace NWTraders.Views
             this.btnReset.TabIndex = 0;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.BtnReset_Click);
+
             // 
             // lblProductName
             // 

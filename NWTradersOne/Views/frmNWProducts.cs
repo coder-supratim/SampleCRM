@@ -423,6 +423,7 @@ namespace NWTraders.Views
 
             // Load the DGV with all the products.
             LoadDGV(nwEntities.Products);
+            LoadSupplierDGV(nwEntities.Suppliers);
         }
 
        
